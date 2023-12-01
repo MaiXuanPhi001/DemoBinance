@@ -18,16 +18,6 @@ const PI = () => {
 
     useEffect((): any => {
         handleGetChart()
-
-        const newSocket = io(contants.HOSTING_CHART)
-
-        newSocket.on(`BTCUSDTUPDATESPOT`, data => {
-            if (data.length > 0) {
-                dispatch(setChartFromSocket(data[0]))
-            }
-        })
-
-        return () => newSocket.disconnect()
     }, [])
 
     const handleGetChart = async () => {
@@ -42,10 +32,7 @@ const PI = () => {
     }
     return (
         <KeyBoardSafe>
-                <PiChart
-                    data={chart}
-                    chartLagre={chartLagre}
-                /> 
+               
         </KeyBoardSafe>
     )
 }
